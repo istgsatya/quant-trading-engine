@@ -26,7 +26,7 @@ The project focuses on engineering reliability, execution quality,
 and market microstructure behavior rather than trading strategy logic.
 
 It is intended to demonstrate production-grade backend system design,
-not to function as a distributable trading bot.
+not to function as a distributable trading bot. 
 
 ---
 
@@ -116,10 +116,12 @@ Persistence
 |--------------------------|--------------------------|
 | Tick to Decision Latency | ~2–5 ms                  |
 | Orderbook Update         | Sub-millisecond          |
-| TUI Refresh Rate         | 50–100 Hz                |
-| Runtime                  | Linux                    |
+| TUI Refresh Rate         | 100+ Hz                  |
+| Runtime                  | Any OS                   |
 | Architecture             | Single-process in-memory |
 
+
+Those numbers on metrics are verified via logs and counting tick times in certain loops
 ---
 
 ## Repository Structure
