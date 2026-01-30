@@ -1,229 +1,246 @@
-# ⚡ Low-Latency Quant Trading Engine
+<p align="center"> <img src="https://img.shields.io/badge/Language-Go-00ADD8?style=for-the-badge&logo=go" /> <img src="https://img.shields.io/badge/Latency-2–5ms-critical?style=for-the-badge" /> <img src="https://img.shields.io/badge/Architecture-Low%20Latency-blueviolet?style=for-the-badge" /> <img src="https://img.shields.io/badge/Platform-Linux-black?style=for-the-badge" /> </p> <p align="center"> <b> Real-time trading infrastructure built for speed, stability, and surviving chaotic markets. </b> </p>
+🚀 What is this?
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Language-Go-00ADD8?style=for-the-badge&logo=go" />
-  <img src="https://img.shields.io/badge/Latency-2–5ms-critical?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Architecture-Low%20Latency-blueviolet?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Platform-Linux-black?style=for-the-badge" />
-</p>
+This is a low-latency quant trading engine written in Go.
 
-<p align="center">
-  <b>High-performance real-time trading infrastructure focused on latency, execution quality, and market microstructure.</b>
-</p>
+It processes live exchange orderbooks, reacts in milliseconds, and focuses on the part most bots completely ignore:
 
----
+the infrastructure.
 
-## 🚀 Overview
+Not indicators.
+Not ML predictions.
+Not “RSI 14 bro trust me”.
 
-This project is a **low-latency quantitative trading engine** written in **Go**, designed to process live exchange orderbooks and execute trades with **millisecond-level tick-to-decision latency**.
+This project is about how trades actually get executed in real systems.
 
-Unlike typical trading bots or academic demos, this system focuses on the **infrastructure layer** used in professional trading environments:
+🧠 What this engine actually handles
 
-- real-time market data ingestion  
-- in-memory orderbook reconstruction  
-- microstructure-based intelligence  
-- execution priority management  
-- latency-aware risk control  
-- crash-safe recovery  
-- multi-instance coordination  
+real-time WebSocket market data
 
----
+in-memory orderbook reconstruction
 
-## 🧠 Core Design Principles
+microstructure & orderflow analysis
 
-- **execution quality over prediction**
-- **structure over complexity**
-- **orderflow over indicators**
-- **deterministic behavior under load**
-- **fail safely, recover automatically**
+execution priority (top-of-book fights)
 
----
+latency-aware risk control
 
-## 🧩 High-Level Architecture
+crash-safe recovery
 
+multi-instance coordination
+
+No toy logic.
+No backtest fantasy land.
+
+🧩 Core mindset
+
+execution > prediction
+
+structure > clever hacks
+
+orderflow > indicators
+
+deterministic behavior under load
+
+if it crashes, it recovers automatically
+
+If it can’t survive chaos, it doesn’t belong in prod.
+
+🧱 High-Level Architecture
 Market Data
-↓
+     ↓
 Orderbook
-↓
+     ↓
 Microstructure
-↓
+     ↓
 Strategy Interface
-↓
+     ↓
 Execution Engine
-↓
+     ↓
 Risk Manager
-↓
+     ↓
 Exchange Gateway
-↓
+     ↓
 Persistence
 
-yaml
-Copy code
 
----
+Everything is isolated.
+Everything has boundaries.
+Nothing leaks across layers.
 
-## ⚙️ Key Capabilities
+⚙️ What’s inside
+📡 Market Data
 
-### 📡 Market Data Engine
-- WebSocket-first ingestion pipeline  
-- REST snapshot recovery  
-- sequence gap detection  
-- normalized delta feeds  
+WebSocket-first pipeline
 
-### 📘 Orderbook Engine
-- in-memory reconstruction  
-- constant-time best bid / ask  
-- depth aggregation  
-- spread computation  
+REST snapshot fallback
 
-### 🔍 Microstructure Intelligence
-- bid-ask imbalance  
-- liquidity clustering  
-- thin-liquidity zones  
-- abnormal size detection  
+sequence-gap detection
 
-### ⚔️ Adaptive Execution
-- limit-order based execution  
-- continuous repricing  
-- queue-priority management  
-- protection from unstable depth  
+normalized delta feeds
 
-### 🧠 Predictive Exit Control
-- profit targeting  
-- break-even defense  
-- loss minimization  
-- forward liquidity awareness  
+📘 Orderbook
 
-### 🖥 Terminal Dashboard (TUI)
-- 50–100 Hz refresh rate  
-- zero GC latency spikes  
-- live orderbook ladder  
-- execution and system metrics  
+fully in-memory
 
-### 🧯 Fault Tolerance
-- crash-safe persistence  
-- automatic recovery  
-- safe restart without trade loss  
+constant-time best bid / ask
 
-### 🧬 Distributed Coordination
-- leader election  
-- cooldown locks  
-- self-competition prevention  
+depth aggregation
 
----
+real-time spread tracking
 
-## ⏱️ Performance
+🔍 Microstructure
 
-| Metric | Value |
-|------|------|
-| Tick → Decision Latency | ~2–5 ms |
-| Orderbook Update | Sub-millisecond |
-| TUI Refresh | 50–100 Hz |
-| Runtime | Linux |
-| Architecture | Single-process in-memory |
+bid–ask imbalance
 
----
+liquidity clustering
 
-## 🔒 Source Code Notice
+thin-ice zones
 
-This repository intentionally omits:
+aggressive pressure detection
 
-- proprietary strategy logic  
-- execution heuristics  
-- thresholds and parameters  
-- exchange credentials  
+No candles.
+No laggy indicators.
 
-The goal is to demonstrate **engineering depth**, not distribute a trading bot.
+⚔️ Execution Engine
 
----
+limit-order focused
 
-## 📂 Repository Structure
+continuous repricing
 
-cmd/engine → engine bootstrap
-internal/ → core interfaces
-docs/ → architecture & system design
-examples/ → safe mock demonstrations
-notes/ → design references
+queue-position awareness
 
-yaml
-Copy code
+avoids unstable liquidity
 
----
+This part is about getting filled, not predicting price.
 
-## 🎯 Project Purpose
+🧠 Exit Logic
 
-This system was built to:
+profit target handling
 
-- deeply understand exchange microstructure  
-- design low-latency backend systems  
-- explore execution mechanics  
-- practice production-grade system design  
+break-even defense
 
-It reflects **real-world engineering constraints**, not theoretical trading models.
+controlled loss exits
 
----
+forward orderbook pressure checks
 
-<p align="center">
-<b>⚡ Built for speed. Designed for chaos. Engineered for reality.</b>
-</p>
+Exits adapt to liquidity — not vibes.
 
----
+🖥 Terminal UI (TUI)
 
-## 🗺️ Visual Architecture Overview
+runs fully inside terminal
 
-### 🔹 System Flow Diagram
+50–100 Hz refresh rate
 
-<p align="center">
-  <img src="docs/images/architecture-flow.png" width="900"/>
-</p>
+zero GC latency spikes
 
-This diagram illustrates the complete lifecycle of the trading engine —
-from market data ingestion and normalization, through decision evaluation,
-execution handling, and multiple safety and fallback paths.
+live orderbook ladder
 
-The visualization focuses on **control flow and system resilience** rather than trading logic.
+engine + execution telemetry
 
----
+Built for monitoring chaos in real time.
 
-### 🔹 Live Runtime Dashboard (TUI)
+🧯 Safety & Recovery
 
-<p align="center">
-  <img src="docs/images/runtime-dashboard.png" width="900"/>
-</p>
+crash-safe persistence
 
-Snapshot of the terminal-based runtime dashboard captured during live engine operation.
+state reload on restart
 
-The interface provides real-time observability into:
+no lost positions
 
-- live orderbook ladder and depth movement  
-- bid–ask pressure and liquidity shifts  
-- active execution state (buy / sell / idle)  
-- strategy mode transitions  
-- capital allocation tracking  
-- loop health, latency, and engine status  
-- structured system logs and alerts  
+no orphaned orders
 
-All identifiers, balances, and parameters have been intentionally anonymized.
+If the process dies, the engine doesn’t panic.
 
-This interface is designed for **system observability and debugging**,  
-not for presenting trading performance.
+🧬 Multi-Instance Mode
 
----
+leader election
 
-## 🔍 What This Project Demonstrates
+cooldown locks
 
-This project demonstrates experience in:
+self-trade prevention
 
-- designing real-time low-latency backend systems  
-- processing exchange-style WebSocket market data  
-- reconstructing orderbooks from incremental deltas  
-- analyzing market microstructure in real time  
-- implementing execution-priority order placement logic  
-- building concurrency-safe Go pipelines  
-- developing terminal-based observability tooling  
-- implementing crash-safe persistence and recovery  
-- coordinating multiple trading instances safely  
+no instance fighting itself
 
-The repository intentionally focuses on **engineering design and architecture**,  
-not on exposing proprietary trading strategies.
+Scale without nuking your own fills.
 
+⏱️ Performance (real-world)
+Metric	Value
+Tick → Decision	~2–5 ms
+Orderbook Updates	Sub-ms
+UI Refresh	50–100 Hz
+Runtime	Linux
+Architecture	Single-process, in-memory
+🔒 About the source code
+
+This repo does not expose:
+
+strategy math
+
+thresholds
+
+execution heuristics
+
+tuning parameters
+
+exchange credentials
+
+That stuff stays private.
+
+What this repo shows is:
+
+how the system is built, not how the alpha works.
+
+📂 Repo layout
+cmd/engine      → engine bootstrap
+internal/       → core system interfaces
+docs/           → architecture & design
+examples/       → safe mock demos
+notes/          → design thoughts
+
+🗺️ Architecture Flow
+<p align="center"> <img src="docs/images/architecture-flow.png" width="900"/> </p>
+
+High-level control flow of the engine — including fallback paths,
+safety checks, and shutdown handling.
+
+The diagram explains how data moves, not how decisions are made.
+
+🖥 Runtime Dashboard
+<p align="center"> <img src="docs/images/runtime-dashboard.png" width="900"/> </p>
+
+Live snapshot from the terminal UI.
+
+Shows:
+
+real orderbook movement
+
+execution state transitions
+
+engine health
+
+loop timing
+
+structured logs
+
+All balances and identifiers are blurred on purpose.
+
+This UI exists for observability, not flexing PnL.
+
+🧠 What this project proves
+
+I can build real-time systems under latency pressure
+
+I understand exchange data flow deeply
+
+I can design clean multi-layer architectures
+
+I know how execution actually works
+
+I think in failure modes, not happy paths
+
+This isn’t a “bot”.
+
+It’s a trading engine.
+
+<p align="center"> <b>⚡ fast code. zero vibes. only execution.</b> </p>
