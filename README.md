@@ -166,3 +166,64 @@ It reflects **real-world engineering constraints**, not theoretical trading mode
 <p align="center">
 <b>⚡ Built for speed. Designed for chaos. Engineered for reality.</b>
 </p>
+
+---
+
+## 🗺️ Visual Architecture Overview
+
+### 🔹 System Flow Diagram
+
+<p align="center">
+  <img src="docs/images/architecture-flow.png" width="900"/>
+</p>
+
+This diagram illustrates the complete lifecycle of the trading engine —
+from market data ingestion and normalization, through decision evaluation,
+execution handling, and multiple safety and fallback paths.
+
+The visualization focuses on **control flow and system resilience** rather than trading logic.
+
+---
+
+### 🔹 Live Runtime Dashboard (TUI)
+
+<p align="center">
+  <img src="docs/images/runtime-dashboard.png" width="900"/>
+</p>
+
+Snapshot of the terminal-based runtime dashboard captured during live engine operation.
+
+The interface provides real-time observability into:
+
+- live orderbook ladder and depth movement  
+- bid–ask pressure and liquidity shifts  
+- active execution state (buy / sell / idle)  
+- strategy mode transitions  
+- capital allocation tracking  
+- loop health, latency, and engine status  
+- structured system logs and alerts  
+
+All identifiers, balances, and parameters have been intentionally anonymized.
+
+This interface is designed for **system observability and debugging**,  
+not for presenting trading performance.
+
+---
+
+## 🔍 What This Project Demonstrates
+
+This project demonstrates experience in:
+
+- designing real-time low-latency backend systems  
+- processing exchange-style WebSocket market data  
+- reconstructing orderbooks from incremental deltas  
+- analyzing market microstructure in real time  
+- implementing execution-priority order placement logic  
+- building concurrency-safe Go pipelines  
+- developing terminal-based observability tooling  
+- implementing crash-safe persistence and recovery  
+- coordinating multiple trading instances safely  
+
+The repository intentionally focuses on **engineering design and architecture**,  
+not on exposing proprietary trading strategies.
+
