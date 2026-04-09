@@ -33,8 +33,7 @@ risk → exposure control
 exchange → API abstraction
 persistence → recovery & durability
 
-yaml
-Copy code
+
 
 This separation allows independent optimization without cascading side effects.
 
@@ -56,8 +55,6 @@ Execution Decision
 ↓
 Order Transmission
 
-yaml
-Copy code
 
 This path is kept:
 
