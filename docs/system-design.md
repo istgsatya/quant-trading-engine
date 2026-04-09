@@ -1,4 +1,4 @@
-# ⚙️ System Design Deep Dive
+# System Design Deep Dive
 
 This document provides a deeper technical explanation of the internal design decisions behind the **Low-Latency Quant Trading Engine**.
 
@@ -6,7 +6,7 @@ It focuses on engineering structure rather than trading logic.
 
 ---
 
-## 🎯 Design Objectives
+## Design Objectives
 
 The engine was designed with the following primary goals:
 
@@ -20,7 +20,7 @@ The engine was designed with the following primary goals:
 
 ---
 
-## 🧱 Component Isolation
+## Component Isolation
 
 Each major subsystem operates behind a strict interface boundary.
 
@@ -39,7 +39,7 @@ This separation allows independent optimization without cascading side effects.
 
 ---
 
-## ⚡ Latency-Critical Path
+## Latency-Critical Path
 
 The primary latency-sensitive flow is:
 
@@ -68,7 +68,7 @@ All non-critical work is offloaded asynchronously.
 
 ---
 
-## 🧠 Memory Model
+## Memory Model
 
 Key principles:
 
@@ -82,7 +82,7 @@ The engine is designed to minimize garbage collection pressure during live tradi
 
 ---
 
-## 🔁 Concurrency Model
+## Concurrency Model
 
 The system follows a message-driven architecture:
 
@@ -96,7 +96,7 @@ This model ensures deterministic ordering without excessive locking.
 
 ---
 
-## 🔍 Microstructure Analysis
+## Microstructure Analysis
 
 All market intelligence is derived from:
 
@@ -109,7 +109,7 @@ No candle-based indicators or historical technical analysis are used.
 
 ---
 
-## ⚔️ Execution Strategy
+## Execution Strategy
 
 Execution focuses on:
 
@@ -123,7 +123,7 @@ The engine prioritizes **execution quality**, not signal frequency.
 
 ---
 
-## 🛑 Risk Enforcement
+## Risk Enforcement
 
 Risk checks are applied:
 
@@ -137,7 +137,7 @@ The risk engine has absolute authority to disable trading instantly.
 
 ---
 
-## 💾 Persistence Strategy
+## Persistence Strategy
 
 State persistence is designed to be:
 
@@ -150,7 +150,7 @@ On restart, the engine reconstructs its last known execution state before resumi
 
 ---
 
-## 🧬 Multi-Instance Coordination
+## Multi-Instance Coordination
 
 When running multiple engine processes:
 
@@ -163,7 +163,7 @@ This allows scaling without internal market impact.
 
 ---
 
-## 🧪 Testing Philosophy
+## Testing Philosophy
 
 The system is validated using:
 
@@ -176,7 +176,7 @@ Testing focuses on behavior under stress rather than profit metrics.
 
 ---
 
-## 📌 Summary
+## Summary
 
 This trading engine is designed as:
 
