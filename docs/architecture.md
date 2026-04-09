@@ -1,4 +1,4 @@
-# 🧠 System Architecture
+# System Architecture
 
 This document describes the high-level architecture of the **Low-Latency Quant Trading Engine**, focusing on data flow, execution boundaries, and design rationale.
 
@@ -6,7 +6,7 @@ The system is intentionally modular, enabling independent development, testing, 
 
 ---
 
-## ⚡ Architectural Goals
+##  Architectural Goals
 
 - deterministic low-latency execution
 - predictable memory behavior
@@ -17,7 +17,7 @@ The system is intentionally modular, enabling independent development, testing, 
 
 ---
 
-## 🧩 High-Level Flow
+## High-Level Flow
 
 Exchange Market Data
 ↓
@@ -42,7 +42,7 @@ Persistence Layer
 
 ---
 
-## 📡 Market Data Layer
+## Market Data Layer
 
 **Responsibilities:**
 
@@ -59,7 +59,7 @@ Persistence Layer
 
 ---
 
-## 📘 Orderbook Engine
+## Orderbook Engine
 
 The orderbook is maintained entirely in memory and acts as the single source of truth for all trading decisions.
 
@@ -74,7 +74,7 @@ The orderbook is isolated from strategy logic to ensure correctness and performa
 
 ---
 
-## 🔍 Microstructure Intelligence Layer
+## Microstructure Intelligence Layer
 
 This layer extracts real-time market signals directly from orderbook behavior.
 
@@ -90,7 +90,7 @@ All computations are derived from **orderflow**, not indicators.
 
 ---
 
-## 🧠 Strategy Interface
+## Strategy Interface
 
 Strategies operate exclusively on:
 
@@ -108,7 +108,7 @@ This ensures strategy code remains portable and testable.
 
 ---
 
-## ⚔️ Execution Engine
+## Execution Engine
 
 The execution engine manages the complete lifecycle of orders:
 
@@ -128,7 +128,7 @@ Execution logic is fully decoupled from alpha generation.
 
 ---
 
-## 🛑 Risk Management
+## Risk Management
 
 Risk controls are enforced **before** orders reach the exchange.
 
@@ -144,7 +144,7 @@ The risk layer has authority to block or cancel orders at any time.
 
 ---
 
-## 🔁 Exchange Gateway
+## Exchange Gateway
 
 The gateway abstracts exchange-specific APIs.
 
@@ -160,7 +160,7 @@ This design allows the engine to support multiple exchanges without modifying up
 
 ---
 
-## 💾 Persistence & Recovery
+## Persistence & Recovery
 
 Critical runtime state is persisted continuously:
 
@@ -178,7 +178,7 @@ This prevents catastrophic failures during crashes or restarts.
 
 ---
 
-## 🧬 Multi-Instance Coordination
+## Multi-Instance Coordination
 
 When multiple engine instances run simultaneously:
 
@@ -190,7 +190,7 @@ This enables horizontal scaling without internal competition.
 
 ---
 
-## ⏱️ Latency Considerations
+## Latency Considerations
 
 The system is optimized for:
 
@@ -208,7 +208,7 @@ Latency is measured across:
 
 ---
 
-## 🎯 Summary
+## Summary
 
 This engine prioritizes:
 
